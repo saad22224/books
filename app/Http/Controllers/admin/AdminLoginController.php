@@ -17,7 +17,7 @@ class AdminLoginController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        $admin = User::where('email', $request->email)->first();
+        $admin = User::where('email', $request->email)->where('role' , 'admin')->first();
         if ($admin && Hash::check($request->password, $admin->password)) {
             Auth::guard()->login($admin);
             return redirect()->route('dashboard');
