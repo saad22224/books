@@ -20,7 +20,7 @@ class AdminLoginController extends Controller
         $admin = User::where('email', $request->email)->where('role' , 'admin')->first();
         if ($admin && Hash::check($request->password, $admin->password)) {
             Auth::guard()->login($admin);
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         } else {
             return redirect()->back()->with('error', 'Invalid email or password');
         }
