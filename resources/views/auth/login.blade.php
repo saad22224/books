@@ -1,47 +1,79 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Book</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./user/css/all.min.css">
+  <link rel="stylesheet" href="./user/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./user/css/style.css">
+</head>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+<body>
+  <section class="my-5">
+    <div class="container-fluid">
+      <div class="row justify-content-center ms-2">
+        <div class="col-md-6 d-none d-md-flex">
+          <img src="./user/assets/image.png" class="w-100 h-100" alt="user">
         </div>
+        <div class=" col-md-6 login d-flex justify-content-center align-items-center ">
+          <div class="">
+            <div class="logo d-flex mb-lg-4 mb-md-0">
+              <img src="./user/assets/Group 1000007853.png" alt="logo">
+              <h4  class="align-self-center ms-lg-2  pt-3">CreateBook</h4>
+            </div>
+            <h1>Login to your account</h1>
+            <p class="my-4">Haven’t any account? <a href="./index.html" target="_self">Sign Up</a></p>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+                <!-- Email Address -->
+                <div>
+                    <input type="email" name="email" placeholder="Enter your Email" class="form-control w-100 mb-2" value="{{ old('email') }}" required autofocus>
+                    @error('email')
+                        <div class="mt-2 text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+                <!-- Password -->
+                <div class="mt-4 position-relative w-100">
+                    <input type="password" name="password" placeholder="Password" class="form-control w-100" required autocomplete="current-password">
+                    <i class="fa-solid fa-eye position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
+                    @error('password')
+                        <div class="mt-2 text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <!-- Remember Me -->
+                <div class="checkbox-group d-flex">
+                    <input type="checkbox" name="remember" id="remember_me">
+                    <p class="align-self-center mt-3 ms-2">Keep me logged in</p>
+                </div>
+
+                <button class="main-btn mt-3">Log in</button>
+
+                <p class="paragh my-3 text-center position-relative">Or Log In with</p>
+
+                <div class="button_group d-flex mt-2">
+                    <button class="me-2 text-center">
+                        <img src="./user/assets/Group 78.png" class="me-1" alt="google logo">
+                        Google
+                    </button>
+                    <button class="text-center me-2">
+                        <img src="./user/assets/Vector.png" class="me-1" alt="apple">
+                        Apple
+                    </button>
+                </div>
+            </form>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+  <script src="./user/js/bootstrap.bundle.min.js"></script>
+</body>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>

@@ -1,63 +1,88 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="fname" :value="__('fName')" />
-            <x-text-input id="fname" class="block mt-1 w-full" type="text" name="fname" 
-            :value="old('fname')" required autofocus autocomplete="fname" />
-            <x-input-error :messages="$errors->get('fname')" class="mt-2" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Book</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./user/css/all.min.css">
+  <link rel="stylesheet" href="./user/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./user/css/style.css">
+</head>
+
+<body>
+  <section class="my-5">
+    <div class="container-fluid">
+      <div class="row justify-content-center ms-2">
+        <div class="col-md-6 d-none d-md-flex">
+          <img src="./user/assets/image.png" class="w-100 h-100" alt="user">
         </div>
+        <div class="col-md-6 login d-flex justify-content-center align-items-center">
+          <div class="">
+            <div class="logo d-flex mb-lg-4 mb-md-0 ms-5">
+              <img src="./user/assets/Group 1000007853.png" alt="logo">
+              <h4 class="align-self-center ms-lg-2 pt-3">CreateBook</h4>
+            </div>
+            <h1 class="ms-5">Create an account</h1>
+            <p class="my-4 ms-5">Already have an account? <a href="{{route('login')}}" target="_self">Log in</a></p>
 
+            <form method="POST" action="{{ route('register') }}" class="ms-5 w-75">
+              @csrf
 
-        <div>
-            <x-input-label for="lname" :value="__('lName')" />
-            <x-text-input id="lname" class="block mt-1 w-full" type="text" name="lname" :value="old('lname')" required autofocus autocomplete="lname" />
-            <x-input-error :messages="$errors->get('lname')" class="mt-2" />
+              <div class="d-flex">
+                <div class="w-50 me-2">
+                  <input type="text" name="fname" placeholder="First Name" class="form-control mt-2" value="{{ old('fname') }}" required>
+                  @error('fname')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                  @enderror
+                </div>
+                <div class="w-50">
+                  <input type="text" name="lname" placeholder="Last Name" class="form-control mt-2" value="{{ old('lname') }}" required>
+                  @error('lname')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                  @enderror
+                </div>
+              </div>
+
+              <input type="email" name="email" placeholder="Enter your Email" class="form-control w-100 mb-2 mt-2" value="{{ old('email') }}" required>
+              @error('email')
+                <div class="text-danger mt-1">{{ $message }}</div>
+              @enderror
+
+              <div class="position-relative w-100">
+                <input type="password" name="password" placeholder="Password" class="form-control w-100" required>
+                <i class="fa-solid fa-eye position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
+              </div>
+              @error('password')
+                <div class="text-danger mt-1">{{ $message }}</div>
+              @enderror
+
+              <div class="checkbox-group d-flex mt-3">
+                <input type="radio" name="agreement" value="1" id="agree" required>
+                <label for="agree" class="ms-2">أوافق على الشروط</label>
+              </div>
+
+              <button class="main-btn mt-3">Register</button>
+
+              <p class="paragh my-3 text-center position-relative">Or Sign Up with</p>
+
+              <div class="button_group d-flex mt-2">
+                <button class="me-2 text-center">
+                  <img src="./user/assets/Group 78.png" class="me-1" alt="google logo"> Google
+                </button>
+                <button class="text-center me-2">
+                  <img src="./user/assets/Vector.png" class="me-1" alt="apple"> Apple
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+  <script src="./user/js/bootstrap.bundle.min.js"></script>
+</body>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        {{-- <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div> --}}
-
-        <input type="radio" name="agreement" value="1" id="agree">
-<label for="agree">أوافق على الشروط</label>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>
