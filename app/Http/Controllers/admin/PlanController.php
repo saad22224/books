@@ -47,15 +47,25 @@ class PlanController extends Controller
     public function edit( Plan $plan)
     {
         $plan = Plan::find($plan->id);
-        $plan->update([
-            'status' => $plan->status == 'active' ? 'disactive' : 'active',
-        ]);
-        return response()->json([
-            'message' => 'Plan status updated successfully',
-        ]);
-
+      
     }
 
+
+    public function status($id, Request $request)
+    {
+        $plan = Plan::findOrFail($id);
+    
+        // تبديل الحالة
+        $plan->status = ($plan->status === 'active') ? 'disactive' : 'active';
+        $plan->save();
+    
+        return response()->json([
+            'success' => true,
+            'new_status' => $plan->status,
+            'message' => 'Plan status updated successfully',
+        ]);
+    }
+    
     /**
      * Update the specified resource in storage.
      */
@@ -69,6 +79,8 @@ class PlanController extends Controller
      */
     public function destroy(Plan $plan)
     {
-        //
+        // return $plan;
+        $plan->delete();
+        return redirect()->back()->with('success', 'Plan deleted successfully');
     }
 }

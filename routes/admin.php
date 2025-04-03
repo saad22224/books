@@ -21,3 +21,4 @@ Route::get('/admin/dashboard', function () {
 // subscription plan routes
 
 Route::resource('admin/plans', PlanController::class)->middleware('admin');
+Route::put('admin/plans/{id}/status', [PlanController::class, 'status'])->name('admin.plans.status')->middleware('admin');
