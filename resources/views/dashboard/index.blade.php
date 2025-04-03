@@ -37,6 +37,10 @@
                 <a href="./newapi.html">
                     <img src="/admin/assets/Group 1000008238.png"  alt=" Settings">
                     <p class="mb-4">API</p></a>
+                    <form action="{{route('admin.logout')}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-danger mt-5">Logout</button>
+                    </form>
             </nav>
 
             <!-- Main Content ms-sm-auto px-md-4 -->

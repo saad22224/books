@@ -5,7 +5,7 @@
 use App\Http\Controllers\admin\AdminLoginController;
 
 
-Route::get('/admin', function () {
+Route::get('/bookadmin', function () {
     return view('dashboard.login');
 })->name('admin');
 
@@ -14,4 +14,4 @@ Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->name('adm
 
 Route::get('/admin/dashboard', function () {
     return view('dashboard.index');
-})->name('admin.dashboard');
+})->name('admin.dashboard')->middleware('admin');
