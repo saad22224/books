@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('agreement')->default('0');
             $table->string('role')->default('user');
+            $table->string('subscription')->default('free');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -22,7 +22,7 @@
                 <a href="./mangment.html">
                     <img src="/admin/assets/Group 1000008235.png"  alt="user managment">
                    <p class="mb-4">User Management</p></a>
-                <a href="./subscriptionplan.html" target="_self">
+                <a href="{{route('plans.index')}}" target="_self">
                     <img src="/admin/assets/Vector (2).png"  alt="Subscriptions">
                     <p class="mb-4">Subscriptions</p></a>
                 <a href="./sitesetting.html">
