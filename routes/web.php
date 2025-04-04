@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\user\ProjectController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,11 +22,9 @@ Route::get('/', function () {
 Route::get('user/dashboard', function () {
     return view('user/dashbord');
 })->middleware(['auth', 'verified'])->name('dashboard');
-use Illuminate\Support\Facades\Auth;
 
-// Route::get('/test-auth', function () {
-//     dd(Auth::user());
-// })->middleware('auth');
+
+Route::get('user/project' , [ProjectController::class , 'show'])->name('project.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
