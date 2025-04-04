@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <nav class="col-md-1 d-none d-md-block  sidebar shadow text-center position-relative  pt-2">
+            {{-- <nav class="col-md-1 d-none d-md-block  sidebar shadow text-center position-relative  pt-2">
                 <a href="/admin/index.html"><img src="/admin/assets/Group 1000007883.png" class=""
                         alt="Dashboard">
                     <p class="mb-4"> Dashboard</p>
@@ -47,13 +47,13 @@
                     <img src="/admin/assets/Group 1000008238.png" alt=" Settings">
                     <p class="mb-4">API</p>
                 </a>
-            </nav>
-
+            </nav> --}}
+            @include('layouts.sidebar')
             <!-- Main Content ms-sm-auto px-md-4 -->
             <main class="col-md-11 ">
 
                 <!-- Header -->
-                <div class="d-flex justify-content-between overflow-hidden  border-bottom  nav-create py-1">
+                {{-- <div class="d-flex justify-content-between overflow-hidden  border-bottom  nav-create py-1">
                     <div class="d-md-flex d-none mb-5 align-self-center create ms-2 position-absolute ">
                         <img src="/admin/assets/Group 1000007853.png" class="ms-md-3 mb-md-1" alt="logo">
                         <h4 class="text-center mt-md-1 me-5 me-md-5 ms-md-2 ">CreateBook</h4>
@@ -84,11 +84,13 @@
                     </div>
 
 
-                </div>
+                </div> --}}
+                @include('layouts.header')
+
                 <div class="img_managment2 position-relative">
                     <img src="/admin/assets/Vector (5).png" class="position-absolute top-0" alt="">
                     <h1 class="w-100 text-center">Subscription Managment</h1>
-                    <button class="button_Adduser position-absolute z-1 ">Create New Plan</button>
+                    <a href=" {{route('plans.create')}}" class="button_Adduser position-absolute z-1 ">Create New Plan</a>
                     <img src="/admin/assets/Vector (7).png" class="position-absolute img_line" alt="">
                     <img src="/admin/assets/Group (3).png" class="position-absolute img_line2" alt="">
                     <img src="/admin/assets/Vector (4).png" class="position-absolute img_line2" alt="">
@@ -138,8 +140,8 @@
                                                 <button type="submit" class=" button_admin3 btn btn-danger mt-md-2"><i
                                                         class="fa-solid fa-trash-can me-2 "></i>Delete</button>
                                                     </form>
-                                                <button class="button_admin2 btn btn-secondary ms-lg-2 ms-0"><i
-                                                        class="fa-solid fa-pen-to-square me-2"></i>Edite</button>
+                                                <a href="{{route('plans.edit' , $plan->id)}}" class="button_admin2 btn btn-secondary ms-lg-2 ms-0"><i
+                                                        class="fa-solid fa-pen-to-square me-2"></i>Edit</a >
                                             </td>
                                         </tr>
                                         {{-- <tr>
