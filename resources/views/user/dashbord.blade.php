@@ -16,7 +16,8 @@
             <h1 class="">Welcome</h1>
             <h1 class="main-dashbord">{{ auth()->user()->fname . ' ' . auth()->user()->lname }}</h1>
         </div>
-        <a href="./index.html"><button class="button_Adduser position-absolute z-1"> Start a New Book</button></a>
+        <a href="{{ route('project.create') }}"><button class="button_Adduser position-absolute z-1"> Start a New
+                Book</button></a>
         <a href=""><button class="button_Adduser2 position-absolute z-1">Resume Writing</button></a>
 
         <img src="/user/user/assets/Vector (21).png" class="position-absolute img_line_dash" alt="" />

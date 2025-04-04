@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\user\ProjectController;
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,13 @@ Route::get('user/dashboard', function () {
 
 
 Route::get('user/project' , [ProjectController::class , 'show'])->name('project.show');
+Route::get('user/project/create' , [ProjectController::class , 'create'])->name('project.create');
+
+Route::get('user/profile', [UserController::class, 'edit'])->name('profile.edit');
+
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

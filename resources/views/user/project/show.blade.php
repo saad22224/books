@@ -12,9 +12,9 @@
     <div class="img_managment2 position-relative">
         <img src="./assets/Vector (5).png" class="position-absolute top-0" alt="" />
         <h1 class="w-100 text-center">My Projects</h1>
-        <button class="button_Adduser position-absolute z-1">
-            Start a New Book
-        </button>
+        <a href="{{ route('project.create') }}"><button class="button_Adduser position-absolute z-1">
+                Start a New Book
+            </button></a>
         <img src="/user/user/assets/Vector (7).png" class="position-absolute img_line" alt="" />
         <img src="/user/user/assets/Group (3).png" class="position-absolute img_line2" alt="" />
         <img src="/user/user/assets/Vector (4).png" class="position-absolute img_line2" alt="" />

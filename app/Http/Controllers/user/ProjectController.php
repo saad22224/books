@@ -11,4 +11,9 @@ class ProjectController extends Controller
     {
         return view('user.project.show');
     }
+
+    public function create()
+    {
+        return view('user.project.create');
+    }
 }

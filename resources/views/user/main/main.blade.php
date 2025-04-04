@@ -14,7 +14,7 @@
         <div class="row">
             <!-- Sidebar -->
             <nav class="col-md-1 d-none d-md-block sidebar shadow text-center position-relative pt-2">
-                <a href="/user/user/dashbord.html"><img src="/user/user/assets/Group 1000007883.png" class=""
+                <a href="{{ route('dashboard') }}"><img src="/user/user/assets/Group 1000007883.png" class=""
                         alt="Dashboard" />
                     <p class="mb-3">Dashboard</p>
                 </a>
@@ -26,7 +26,7 @@
                     <img src="/user/user/assets/Vector (14).png" alt="Book Editor Access" />
                     <p class="mb-3">Book Editor Access</p>
                 </a>
-                <a href="./profilemangment.html">
+                <a href="{{ route('profile.edit') }}">
                     <img src="/user/user/assets/Group (4).png" alt="Content Management" />
                     <p class="mb-3">Content Management</p>
                 </a>
