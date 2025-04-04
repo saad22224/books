@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             PlanSeeder::class,
+            SubscriptionSeeder::class,
             // Add other seeders here if needed
         ]);
     }

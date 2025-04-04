@@ -64,8 +64,9 @@
                                     <label for="password" class="form-label">Password</label>
                                     <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password" required>
                                 </div>
-                            
-                              
+
+
+
                                 <!-- Role Selection -->
                                 <div class="mb-3 w-75">
                                     <label for="role" class="form-label">User Role</label>
@@ -79,12 +80,13 @@
                                 <div class="mb-3 w-75">
                                     <label for="subscription" class="form-label">Subscription Plan</label>
                                     <select name="subscription" class="form-select" id="subscription">
-                                        <option value="" selected disabled>chose subscription</option>
-                                        @foreach ($plans as  $plan)
-                                      <option value="{{$plan->name}}" >{{$plan->name}}</option>
+                                        <option value="" selected disabled>Choose subscription</option>
+                                        @foreach ($plans as $plan)
+                                            <option value="{{ $plan->id }}">{{ $plan->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                                
                             
                                 <!-- Submit Button -->
                                 <button type="submit" class="btn btn-primary">Register</button>

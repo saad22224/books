@@ -89,7 +89,7 @@
                                     <div class="visitor d-flex justify-content-between ">
                                         <div class="d-flex paper">
                                             <img src="/admin/assets/Group (1).png" class="align-self-center" alt="">
-                                            <h3 class="ms-4  align-self-center" >{{$subscripers}}</h3>
+                                            <h3 class="ms-4  align-self-center" >2432434</h3>
                                         </div>
                                         <img src="/admin/assets/Group 1000008082 (1).png" alt="">
                                     </div>
@@ -238,7 +238,7 @@
                                     <hr>
                                     <div class="d-flex text-center justify-content-between">
                                         <div class="ms-3">
-                                            <p>{{$subscripers}}</p>
+                                            <p>12213123</p>
                                             <span class="text-muted">Subscribers</span>
                                         </div>
                                         <div class="new-user px-4">
@@ -247,7 +247,7 @@
                                         </div>
                                         <div class="me-3">
                                             
-                                        <p>{{$unsubscripers}}</p>
+                                        <p>231324</p>
                                         <span class="text-muted">Unsubscribe</span>
                                         </div>
     

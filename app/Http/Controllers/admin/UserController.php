@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $users = User::where('id', '!=', auth()->id())->paginate(20);
         return view('dashboard.user', compact('users'));
-        
+
     }
 
     /**
@@ -25,7 +25,7 @@ class UserController extends Controller
     public function create()
     {
         $plans = Plan::all();
-        return view('dashboard.createuser' , compact('plans'));
+        return view('dashboard.createuser', compact('plans'));
     }
 
     /**
@@ -39,22 +39,30 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required',
             'role' => 'required',
-            'subscription' => 'required',
+            'subscription' => 'required', 
         ]);
-        User::create([
+
+        // إنشاء المستخدم
+        $user = User::create([
             'fname' => $request->fname,
             'lname' => $request->lname,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'role' => $request->role,
-            'subscription' => $request->subscription,
+        ]);
+
+        // إضافة الاشتراك للمستخدم
+        $user->subscriptions()->create([
+            'user_id' => $user->id,
+            'plan_id' => $request->subscription,  // هنا إزالتها ووضعت الـ plan_id فقط
+            'start_date' => now(),
+            'end_date' => now()->addMonth(),
+            'status' => 'active',
         ]);
 
         return redirect()->route('user.index')->with('success', 'User created successfully');
-
-
-        // dd($request->all());
     }
+
 
     /**
      * Display the specified resource.
@@ -93,20 +101,48 @@ class UserController extends Controller
             'role' => 'required',
             'subscription' => 'required',
         ]);
+    
         $user = User::find($id);
+    
         if ($user) {
+            // تحديث بيانات المستخدم
             $user->update([
                 'fname' => $request->fname,
                 'lname' => $request->lname,
                 'email' => $request->email,
                 'role' => $request->role,
-                'subscription' => $request->subscription,
+                'password' => $request->password ? bcrypt($request->password) : $user->password, // إذا لم يتم إدخال كلمة مرور جديدة، احتفظ بكلمة المرور القديمة
             ]);
+    
+            // التأكد إذا كان للمستخدم اشتراك بالفعل
+            $subscription = $user->subscriptions()->first(); // الحصول على الاشتراك المرتبط بالمستخدم
+    
+            if ($subscription) {
+                // إذا كان لديه اشتراك، قم بتحديثه
+                $subscription->update([
+                    'plan_id' => $request->subscription,
+                    'start_date' => now(),
+                    'end_date' => now()->addMonth(),
+                    'status' => 'active',
+                ]);
+            } else {
+                // إذا لم يكن لديه اشتراك، قم بإنشاء اشتراك جديد
+                $user->subscriptions()->create([
+                    'plan_id' => $request->subscription,
+                    'start_date' => now(),
+                    'end_date' => now()->addMonth(),
+                    'status' => 'active',
+                ]);
+            }
+    
             return redirect()->route('user.index')->with('success', 'User updated successfully');
         } else {
             return redirect()->back()->with('error', 'User not found');
         }
     }
+    
+    
+    
 
     /**
      * Remove the specified resource from storage.

@@ -79,15 +79,20 @@
                                 <div class="mb-3 w-75">
                                     <label for="subscription" class="form-label">Subscription Plan</label>
                                     <select name="subscription" class="form-select" id="subscription">
+                                        <option value="" disabled {{ is_null($user->subscriptions->first()) ? 'selected' : '' }}>
+                                            Please choose a subscription plan
+                                        </option>
+                                        
                                         @foreach ($plans as $plan)
-                                            <option value="{{ $plan->name }}" 
-                                                {{ $user->subscription == $plan->name ? 'selected' : '' }}>
+                                            <option value="{{ $plan->id }}" 
+                                                {{ $user->subscriptions->firstWhere('plan_id', $plan->id) ? 'selected' : '' }}>
                                                 {{ $plan->name }}
                                             </option>
                                         @endforeach
                                     </select>
-                                    
                                 </div>
+                                
+                                
                             
                                 <!-- Submit Button -->
                                 <button type="submit" class="btn btn-primary">Register</button>

@@ -10,13 +10,10 @@ class DashboardController extends Controller
     public function index()
     {
         $users = User::count();
-        $subscripers = User::where('subscription', '!=' ,  'free')->count();
-        $unsubscripers = User::where('subscription', '=' ,  'free')->count();
+  
         $newusers = User::where('created_at', '>=', now()->subDays(30))->count();
         return view('dashboard.index' , [
             'users' => $users,
-            'subscripers' => $subscripers,
-            'unsubscripers' => $unsubscripers,
             'newusers' => $newusers,
         ]);
     }
