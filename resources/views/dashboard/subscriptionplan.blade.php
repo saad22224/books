@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/admin/css/all.min.css">
     <link rel="stylesheet" href="/admin/css/bootstrap.min.css">
     <link rel="stylesheet" href="/admin/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 </head>
 
 <body>
@@ -86,7 +88,7 @@
 
                 </div> --}}
                 @include('layouts.header')
-
+             
                 <div class="img_managment2 position-relative">
                     <img src="/admin/assets/Vector (5).png" class="position-absolute top-0" alt="">
                     <h1 class="w-100 text-center">Subscription Managment</h1>
@@ -102,7 +104,19 @@
                         <a href="/admin/submanagment.html">
                             <h2>All Plans</h2>
                         </a>
-
+                        @if (session('success'))
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                Toastify({
+                                    text: "{{ session('success') }}",
+                                    className: "info",
+                                    style: {
+                                        background: "linear-gradient(to right, #00b09b, #96c93d)",
+                                    }
+                                }).showToast();
+                            });
+                        </script>
+                        @endif
                     </div>
 
                     <div class="border rounded-5  mt-3 overflow-hidden shadow p-3 sub-table ">

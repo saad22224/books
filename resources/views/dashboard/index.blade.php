@@ -73,11 +73,11 @@
                         <div class="col-lg-4 col-md-12 mt-4 ">
                             <div class="w-100 mb-4 ms-2 ms-md-0 ">
                                 <div class="card-1 p-4 shadow rounded-4">
-                                    <h6 >Today's Visitors/Traffic</h6>
+                                    <h6 >all  users</h6>
                                     <div class="visitor d-flex justify-content-between ">
                                         <div class="d-flex paper">
                                             <img src="/admin/assets/Group.png" class="align-self-center" alt="">
-                                            <h3 class="ms-4 align-self-center" >2,285</h3>
+                                            <h3 class="ms-4 align-self-center" >{{$users}}</h3>
                                         </div>
                                         <img src="/admin/assets/Group 1000008082.png" alt="">
                                     </div>
@@ -85,11 +85,11 @@
                             </div>
                             <div class=" ms-2 ms-md-0  w-100 mb-4 rounded-4">
                                 <div class="card-1 p-4 shadow rounded-4">
-                                    <h6 >Today's Visitors/Traffic</h6>
+                                    <h6 >totol subscripers</h6>
                                     <div class="visitor d-flex justify-content-between ">
                                         <div class="d-flex paper">
                                             <img src="/admin/assets/Group (1).png" class="align-self-center" alt="">
-                                            <h3 class="ms-4  align-self-center" >1,865</h3>
+                                            <h3 class="ms-4  align-self-center" >{{$subscripers}}</h3>
                                         </div>
                                         <img src="/admin/assets/Group 1000008082 (1).png" alt="">
                                     </div>
@@ -238,16 +238,16 @@
                                     <hr>
                                     <div class="d-flex text-center justify-content-between">
                                         <div class="ms-3">
-                                            <p>200</p>
+                                            <p>{{$subscripers}}</p>
                                             <span class="text-muted">Subscribers</span>
                                         </div>
                                         <div class="new-user px-4">
-                                            <p>140</p>
+                                            <p>{{$newusers}}</p>
                                             <span class="text-muted">New users</span>
                                         </div>
                                         <div class="me-3">
                                             
-                                        <p>100</p>
+                                        <p>{{$unsubscripers}}</p>
                                         <span class="text-muted">Unsubscribe</span>
                                         </div>
     

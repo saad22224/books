@@ -5,6 +5,7 @@
 use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\PlanController;
 use \App\Http\Controllers\admin\UserController;
+use \App\Http\Controllers\admin\DashboardController;
 Route::get('/bookadmin', function () {
     return view('dashboard.login');
 })->name('admin');
@@ -12,9 +13,8 @@ Route::get('/bookadmin', function () {
 Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin.login');
 Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
-Route::get('/admin/dashboard', function () {
-    return view('dashboard.index');
-})->name('admin.dashboard')->middleware('admin');
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])
+->name('admin.dashboard')->middleware('admin');
 
 
 
