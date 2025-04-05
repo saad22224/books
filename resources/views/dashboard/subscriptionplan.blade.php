@@ -218,11 +218,11 @@
                             <table class="table table-hover border-0   align-middle   ">
                                 <div class="d-flex mb-5 mt-5 sub-info">
                                     <h6 class="mx-4">All</h6>
-                                    <h6 class="ms-5">Active (2)</h6>
-                                    <h6 class="ms-5">Expired (1)</h6>
-                                    <h6 class="ms-5">Completed (5)</h6>
-                                    <h6 class="ms-5">Trialling (0)</h6>
-                                    <h6 class="ms-5">Cancelled (1)</h6>
+                                    <h6 class="ms-5">Active {{$activesubscriptions}}</h6>
+                                    <h6 class="ms-5">Expired {{$expiredsubscriptions}}</h6>
+                                    {{-- <h6 class="ms-5">Completed (5)</h6> --}}
+                                    {{-- <h6 class="ms-5">Trialling (0)</h6> --}}
+                                    <h6 class="ms-5">Cancelled {{$canceledsubscriptions}}</h6>
                                 </div>
                                 <thead>
                                     <tr>
@@ -230,32 +230,39 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">ADDED Date</th>
                                         <th scope="col">ASSIGNED Role</th>
-                                        <th scope="col">ACTIONS</th>
+                                        {{-- <th scope="col">ACTIONS</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($totalsubscribers as $subscriber)
+                                        
+                                
                                     <tr class="pt-5">
                                         <td class="p-0 p-md-3 d-md-flex">
-                                            <img src="/admin/assets/image (1).png" class="img_logo mt-sm-2"
-                                                alt="employee">
-                                            <p class="mt-3 mt-lg-4 mt-sm-1 ms-2">#5 - Username</p>
+                                            {{-- <img src="/admin/assets/image (1).png" class="img_logo mt-sm-2"
+                                                alt="employee"> --}}
+                                            <p class="mt-3 mt-lg-4 mt-sm-1 ms-2">{{$subscriber->fname . ' ' . $subscriber->lname}}</p>
                                         </td>
                                         <td class="sub-line ">
-                                            <p>Basic</p>
-                                            <p>$2.99 / Monthly</p>
+                                            <p>{{$subscriber->email}}</p>
+                                            {{-- <p>$2.99 / Monthly</p> --}}
                                         </td>
                                         <td class="pe-md-5 pe-0 ">
-                                            <button class="button_pending btn btn-secondary ms-2">Pending</button>
+                                            <p>{{ $subscriber->subscriptions->first()?->start_date }}</p>
                                         </td>
                                         <td class="sub-line">
-                                            <p>$150.00</p>
-                                            <p>25 Dec, 2024</p>
+                                            <p>{{ $subscriber->subscriptions->first()?->plan?->name }}</p>
+
+
+                                         
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             25 Dec, 2024
-                                        </td>
+                                        </td> --}}
                                     </tr>
-                                    <tr class="pt-5">
+
+                                    @endforeach
+                                    {{-- <tr class="pt-5">
                                         <td class="p-0 p-md-3 d-md-flex">
                                             <img src="/admin/assets/image (2).png" class="img_logo mt-sm-2"
                                                 alt="employee">
@@ -338,7 +345,7 @@
                                         <td>
                                             28 Dec, 2024
                                         </td>
-                                    </tr>
+                                    </tr> --}}
 
 
 

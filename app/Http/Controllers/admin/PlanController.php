@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Plan;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use \App\Models\User;
 class PlanController extends Controller
 {
     /**
@@ -14,7 +15,17 @@ class PlanController extends Controller
     public function index()
     {
         $plans = Plan::all();
-        return view('dashboard.subscriptionplan', compact('plans'));
+        $totalsubscribers = User::has('subscriptions')->paginate(20);
+        $activesubscriptions = Subscription::where('status', 'active')->count();
+        $expiredsubscriptions = Subscription::where('status', 'expired')->count();
+        $canceledsubscriptions = Subscription::where('status', 'canceled')->count();
+        return view('dashboard.subscriptionplan', [
+            'plans' => $plans,
+            'totalsubscribers' => $totalsubscribers,
+            'activesubscriptions' => $activesubscriptions,
+            'expiredsubscriptions' => $expiredsubscriptions,
+            'canceledsubscriptions' => $canceledsubscriptions,
+        ]);
     }
 
     /**
