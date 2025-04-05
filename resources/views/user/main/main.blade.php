@@ -42,7 +42,7 @@
                     <img src="/user/user/assets/Vector (16).png" alt="Notifications" />
                     <p class="mb-3">Notifications</p>
                 </a>
-                <a href="./help.html">
+                <a href="{{ route('user.help') }}">
                     <img src="/user/user/assets/Group (6).png" alt="Help Center" />
                     <p class="mb-3">Help Center</p>
                 </a>

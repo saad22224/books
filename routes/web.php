@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\user\HelpController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\user\ProjectController;
 /*
@@ -29,6 +30,8 @@ Route::get('user/project' , [ProjectController::class , 'show'])->name('project.
 Route::get('user/project/create' , [ProjectController::class , 'create'])->name('project.create');
 
 Route::get('user/profile', [UserController::class, 'edit'])->name('profile.edit');
+
+Route::get('help' , [HelpController::Class , 'help'])->name('user.help');
 
 
 Route::middleware('auth')->group(function () {
