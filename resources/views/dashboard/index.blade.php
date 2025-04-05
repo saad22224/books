@@ -50,7 +50,7 @@
                 <div class="img_main position-relative">
                     <img src="/admin/assets/Vector (5).png" class="position-absolute top-0" alt="">
                     <h1 class="pt-5">Welcome</h1>
-                    <h1 class="color_bakup index-main">Abdul Kader!</h1>
+                    <h1 class="color_bakup index-main">{{auth()->user()->fname . ' ' . auth()->user()->lname}}</h1>
                     <img src="/admin/assets/Vector (7).png" class="position-absolute img_line" alt="">
                     <img src="/admin/assets/Group (3).png" class="position-absolute img_line2" alt="">    
                     <img src="/admin/assets/Vector (4).png" class="position-absolute img_line2" alt="">

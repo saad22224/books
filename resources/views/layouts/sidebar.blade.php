@@ -9,7 +9,7 @@
     <a href="{{route('plans.index')}}" target="_self">
         <img src="/admin/assets/Vector (2).png"  alt="Subscriptions">
         <p class="mb-4">Subscriptions</p></a>
-    <a href="./sitesetting.html">
+    <a href="{{route('admin.setting')}}">
         <img src="/admin/assets/Group 1000008236.png"  alt=" Settings">
        <p class="mb-4"> Settings</p></a>
     <a href="./securitysetting.html">
