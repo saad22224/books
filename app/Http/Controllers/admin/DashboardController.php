@@ -18,11 +18,12 @@ class DashboardController extends Controller
             });
         })->count();
         
-        $unsupscribers  = User::whereHas('subscriptions', function($query) {
+        $unsupscribers = User::whereHas('subscriptions', function($query) {
             $query->whereHas('plan', function($query) {
                 $query->where('name', 'Free Plan');
             });
-        })->count();
+        })->orWhereDoesntHave('subscriptions')->count();
+        
         
         $free = Subscription::whereHas('plan', function($query) {
             $query->where('name', 'Free Plan');
