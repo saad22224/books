@@ -60,7 +60,7 @@ One-click humanizer
             'status' => 'active',
         ]);
         Plan::create([
-            'name' => '🔥 Lifetime Plan ',
+            'name' => 'Lifetime Plan',
             'description' => 'Unlimited books & words
 Plagiarism checker
 Advanced AI Humanizer

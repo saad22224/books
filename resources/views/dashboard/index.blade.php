@@ -164,96 +164,65 @@
     
     
                     <div class="container pb-4">
-                        <div class="row g-4">
-                            <!-- Earnings Card -->
-                            <div class="col-md-12 col-lg-4">
-                                <div class="card p-4 shadow ms-2 mt-4 mt-md-0 ms-md-0">
-                                    <div class="d-flex justify-content-between card_img">
-                                        <img src="/admin/assets/Vector 20 (1).png" alt="line">
-                                        <div class="me-5">
-                                            <h5 >$9,250</h5>
-                                            <p class="text-muted">Net Earning today</p>
+                        <div class="row g-4" style="display: flex !important; flex-direction: row !important;">
+                            <div class="row g-4">
+                                <!-- History Card -->
+                                <div class="col-md-12 col-lg-4">
+                                    <div class="card p-4 shadow ms-2 ms-md-0">
+                                        <div class="d-flex justify-content-between info_security">
+                                            <h5 class="pb-1">Recent Users</h5>
+                                            <a href="#" class="">Show : <span class="text-muted">All History</span></a>
                                         </div>
+                                        <ul class="list-unstyled mt-4">
+                                            @foreach ($newusers as $user)
+                                            <li class="mb-4"><span class="text-success">●</span>
+                                                <strong>{{ $user->fname . ' ' . $user->lname }}
+                                                    <span class="text-muted float-end">
+                                                        {{ $user->created_at->diffForHumans() }}
+                                                    </span>
+                                                </strong>
+                                            </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
-    
-                                    <hr>
-                                    <div class="d-flex justify-content-between  card_img">
-                                        <img src="/admin/assets/Vector 21 (1).png" alt="line">
-                                        <div class="me-3">
-                                            <h5>$18,812</h5>
-                                            <p class="text-muted">Net Earning this month</p>
-                                        </div>
-                                    </div>
-    
-    
                                 </div>
-                                <div class="card-2 p-3 mt-3 shadow ms-2 ms-md-0">
-                                    <div class="d-flex justify-content-between">
-                                        <p>Monthly Progress</p>
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                    </div>
-                                    <div class="d-flex">
-                                        <p class="me-3 ">33%</p>
-                                        <div class="progress w-75 mt-1">
-                                            <div class="progress-bar" style="width: 33%;"></div>
+                            
+                                <!-- Recapitulation Card -->
+                                <div class="col-md-4">
+                                    <div class="card p-3 shadow h-100 ms-2 ms-md-0">
+                                        <div class="d-flex rec justify-content-between">
+                                            <h5>Recapitulation</h5>
+                                            <select class="form-select w-auto">
+                                                <option>Monthly</option>
+                                            </select>
                                         </div>
-                                    </div>
-    
-                                </div>
-                            </div>
-                    
-                            <!-- History Card -->
-                            <div class="col-md-12 col-lg-4">
-                                <div class="card p-4 shadow ms-2 ms-md-0">
-                                    <div class="d-flex justify-content-between info_security">
-                                        <h5 class=" pb-1">History</h5>
-                                        <a href="#"class="">Show : <span class="text-muted">All History</span></a>
-                                    </div>
-                                    <ul class="list-unstyled mt-4">
-                                        <li class="mb-4"><span class="text-success">●</span> <strong>Geo Vanni</strong> started a new trial <span class="text-muted float-end">2h ago</span></li>
-                                        <li class="mb-4"><span class="text-danger">●</span> <strong>Kukuh</strong> failed pay for membership <span class="text-muted float-end">2h ago</span></li>
-                                        <li class="mb-4"><span class="text-primary">●</span> <strong>Indro</strong> upgraded into Premium <span class="text-muted float-end">2h ago</span></li>
-                                        <li class="mb-4"><span class="text-success">●</span> <strong>Indah</strong> joined as new member <span class="text-muted float-end">2h ago</span></li>
-                                        <li class="mb-4"><span class="text-success">●</span> <strong>Patya</strong> joined as new member <span class="text-muted float-end">2h ago</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                    
-                            <!-- Recapitulation Card -->
-                            <div class="col-md-4">
-                                <div class="card p-3 shadow h-100 ms-2 ms-md-0">
-                                    <div class="d-flex rec justify-content-between">
-                                        <h5>Recapitulation</h5>
-                                        <select class="form-select w-auto">
-                                            <option>Monthly</option>
-                                        </select>
-                                    </div>
-                    
-                                    <div class="chart-container mt-4 mb-5 mb-md-5">
-                                        <div class="circle-chart  circle-60">60%</div>
-                                        <div class="circle-chart  circle-25">25%</div>
-                                        <div class="circle-chart circle-10">10%</div>
-                                    </div>
-                    
-                                    <hr>
-                                    <div class="d-flex text-center justify-content-between">
-                                        <div class="ms-3">
-                                            <p>{{$totalsubscribers}}</p>
-                                            <span class="text-muted">Subscribers</span>
+                            
+                                        <div class="chart-container mt-4 mb-5 mb-md-5">
+                                            <div class="">free: {{$free ?? 0}}%</div>
+                                            <div class="">basic: {{$basic ?? 0}}%</div>
+                                            <div class="">pro: {{$Pro ?? 0}}%</div>
+                                            <div class="">lifetime: {{$Lifetime ?? 0}}%</div>
                                         </div>
-                                        <div class="new-user px-4">
-                                            <p>{{$newusers}}</p>
-                                            <span class="text-muted">New users</span>
+                            
+                                        <hr>
+                                        <div class="d-flex text-center justify-content-between">
+                                            <div class="ms-3">
+                                                <p>{{$totalsubscribers}}</p>
+                                                <span class="text-muted">Subscribers</span>
+                                            </div>
+                                            <div class="new-user px-4">
+                                                <p>{{$newusers->count()}}</p>
+                                                <span class="text-muted">New users</span>
+                                            </div>
+                                            <div class="me-3">
+                                                <p>{{$unsupscribers}}</p>
+                                                <span class="text-muted">Unsubscribe</span>
+                                            </div>
                                         </div>
-                                        <div class="me-3">
-                                            
-                                        <p>{{$unsupscribers}}</p>
-                                        <span class="text-muted">Unsubscribe</span>
-                                        </div>
-    
                                     </div>
                                 </div>
                             </div>
+                            
                     </div>
                     </div>
                  </section>

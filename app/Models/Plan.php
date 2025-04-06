@@ -17,4 +17,13 @@ class Plan extends Model
     protected $casts = [
         'status' => 'string',
     ];
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    // User.php
+
+
 }

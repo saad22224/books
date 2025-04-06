@@ -127,12 +127,19 @@ class UserController extends Controller
                 ]);
             } else {
                 // إذا لم يكن لديه اشتراك، قم بإنشاء اشتراك جديد
-                $user->subscriptions()->create([
-                    'plan_id' => $request->subscription,
-                    'start_date' => now(),
-                    'end_date' => now()->addMonth(),
-                    'status' => 'active',
-                ]);
+                $user->subscriptions()->updateOrCreate(
+                    [
+                        'user_id' => $user->id,
+                        'plan_id' => $request->subscription, // التأكد من أن الـ plan_id يتوافق مع الـ user_id
+                    ],
+                    [
+                        'start_date' => now(),
+                        'end_date' => now()->addMonth(),
+                        'status' => 'active',
+                    ]
+                );
+                
+                
             }
     
             return redirect()->route('user.index')->with('success', 'User updated successfully');
