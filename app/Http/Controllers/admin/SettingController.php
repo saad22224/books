@@ -28,8 +28,8 @@ class SettingController extends Controller
 
     public function store(Request $request){
         $request->validate([  
-            'site_logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'site_retinalogo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'site_logo' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'site_retinalogo' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $site_logo = $request->file('site_logo');
