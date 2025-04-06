@@ -33,6 +33,7 @@ class SettingsSeeder extends Seeder
 
             // Title
             'title' => 'book',
+            'fontfamily' => 'Roboto, sans-serif',
         ]);
     }
 }

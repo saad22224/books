@@ -9,10 +9,18 @@ use App\Http\Controllers\Controller;
 class SettingController extends Controller
 {
     public function index(){
-        return view('dashboard.sitesetting');
+        $logo = Setting::where('logo' ,  '!=' ,  null)->first();
+        $retinalogo = Setting::where('retinalogo' ,  '!=' ,  null)->first();
+        return view('dashboard.sitesetting' , [
+            'logo' => $logo,
+            'retinalogo' => $retinalogo,
+        ]);
     }
     public function viewfont(){
-        return view('dashboard.fontsitesetting');
+        $settings = Setting::first();
+        return view('dashboard.fontsitesetting' , [
+            'seettings' => $settings,
+        ]);
     }
     public function viewfeatures(){
         return view('dashboard.feauters');
@@ -41,5 +49,31 @@ class SettingController extends Controller
         ]
     );
         return redirect()->back()->with('success', 'Settings updated successfully.');
+    }
+
+
+    public function updatefont(Request $request){
+   
+        $settings = Setting::first();
+        Setting::updateOrCreate(
+            [], // إذا كنت لا تحتاج إلى شروط معينة للبحث
+            [
+                'fontfamily' => $request->input('fontfamily'),
+                'font_h1' => $request->input('h1'),
+                'font_h2' => $request->input('h2'),
+                'font_h3' => $request->input('h3'),
+                'font_h4' => $request->input('h4'),
+                'font_h5' => $request->input('h5'),
+                'font_paragraph' => $request->input('para'),
+                'body' => $request->input('body'),
+                'heading' => $request->input('heading'),
+                'para' => $request->input('paracolor'),
+                'button' => $request->input('button'),
+            ]
+        );
+    
+        return redirect()->back()->with('success', 'Font updated successfully.');
+
+        // dd($request->all());
     }
 }

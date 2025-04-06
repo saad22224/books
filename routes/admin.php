@@ -45,3 +45,7 @@ route::get('/admin/features', [SettingController::class, 'viewfeatures'])
 
 route::post('/admin/uploadlogos', [SettingController::class, 'store'])
 ->name('admin.uploadlogos')->middleware('admin');
+
+
+route::post('/admin/updatefont', [SettingController::class, 'updatefont'])
+->name('admin.updatefont')->middleware('admin');

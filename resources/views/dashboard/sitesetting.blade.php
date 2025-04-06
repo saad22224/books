@@ -63,7 +63,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex create_book mt-1">
-                                    <img src="/admin/assets/Group 1000007853.png" class="ms-3" alt="logo">
+                                    <img src="{{ asset($logo->logo) }}" class="ms-3" alt="logo">
+
                                     <h4 class="text-center mt-2 me-0 me-md-5 align-self-center">CreateBook</h4>
                                 </div>
                             </div>
@@ -79,7 +80,7 @@
                                 </div>
                             </div>
                         <div class="d-flex create_book2 mt-1">
-                                <img src="/admin/assets/Group 1000007853.png" class="ms-3" alt="logo">
+                            <img src="{{ asset($retinalogo->retinalogo) }}" class="ms-3" alt="logo">
                                 <h4 class="text-center mt-2 me-5 me-md-5 align-self-center ">CreateBook</h4>
                             </div>
                             <!-- Submit button -->

@@ -33,6 +33,7 @@ return new class extends Migration
     
             // Title
             $table->string('title')->nullable();
+            $table->string('fontfamily')->nullable();
     
             $table->timestamps();
         });
