@@ -13,6 +13,8 @@ class Plan extends Model
         'description',
         'price',
         'status',
+        'book_number',
+        'word_number'
     ];
     protected $casts = [
         'status' => 'string',

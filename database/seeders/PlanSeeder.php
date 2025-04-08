@@ -22,6 +22,9 @@ class PlanSeeder extends Seeder
             No one-click features
 ',
             'price' => 0.00,
+            'book_number' => '3',
+            'word_number' => '6000',
+
             'status' => 'active',
         ]);
         Plan::create([
@@ -39,6 +42,8 @@ class PlanSeeder extends Seeder
 
 ',
             'price' => 21,
+            'book_number' => '10',
+            'word_number' => 'unlimited',
             'status' => 'active',
         ]);
         Plan::create([
@@ -57,6 +62,8 @@ One-click humanizer
 
 ',
             'price' => 41,
+            'book_number' => '5',
+            'word_number' => 'unlimited',
             'status' => 'active',
         ]);
         Plan::create([
@@ -76,6 +83,8 @@ Sign Up Now!
 
 ',
             'price' => 299,
+            'book_number' => 'unlimited',
+            'word_number' => 'unlimited',
             'status' => 'active',
         ]);
     }

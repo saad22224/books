@@ -121,6 +121,20 @@
                                     <input  name="price" type="number" class="form-control" >
                                     <span class="input-group-text">USD</span>
                                 </div>
+                                <div class="mt-2 w-75">
+                                    <label for="exampleFormControlInput1" class="form-label">book number
+                                        
+                                    </label>
+                                    <input type="number" placeholder="book number" name="book"
+                                     id="" class="form-control">
+                                </div>
+                                <div class="mt-2 w-75">
+                                    <label for="exampleFormControlInput1" class="form-label">word number
+
+                                    </label>
+                                    <input type="number" placeholder="word number" name="word"
+                                     id="" class="form-control">
+                                </div>
                                 <p class="w-100 font-main">Amount you want to charger people who join this plan. Leave 0 if you want this plan to be free.</p>
                             </div>
                             <h6 >Status</h6>

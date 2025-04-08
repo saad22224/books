@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
+            $table->string('book_number');
+            $table->string('word_number');
             $table->decimal('price', 8, 2)->nullable();
             $table->string('status')->default('active');
             $table->timestamps();

@@ -15,8 +15,20 @@ class PlanController extends Controller
     public function index()
     {
         $plans = Plan::all();
-        $totalsubscribers = User::has('subscriptions')->paginate(20);
-        $activesubscriptions = Subscription::where('status', 'active')->count();
+        $totalsubscribers = User::whereHas('subscriptions', function($query) {
+            $query->whereDoesntHave('plan', function($query) {
+                $query->where('name', 'Free Plan');
+            });
+        })->paginate(20);
+
+
+        $activesubscriptions =  User::whereHas('subscriptions', function($query) {
+            $query->whereDoesntHave('plan', function($query) {
+                $query->where('name', 'Free Plan');
+            });
+        })->count();
+
+        
         $expiredsubscriptions = Subscription::where('status', 'expired')->count();
         $canceledsubscriptions = Subscription::where('status', 'canceled')->count();
         return view('dashboard.subscriptionplan', [
@@ -46,12 +58,16 @@ class PlanController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
             'price' => 'required|numeric',
+            'book' => 'required',
+            'word' => 'required',
             'status' => 'required|in:active,disactive',
         ]);
         Plan::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
+            'book_number' => $request->book,
+            'word_number' => $request->word,
             'status' => $request->status,
         ]);
         return redirect()->route('plans.index')->with('success', 'Plan created successfully');
@@ -99,12 +115,16 @@ class PlanController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
             'price' => 'required|numeric',
+            'book' => 'required',
+            'word' => 'required',
             'status' => 'required|in:active,disactive',
         ]);
         $plan->update([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
+            'book_number' => $request->book,
+            'word_number' => $request->word,
             'status' => $request->status,
         ]);
         return redirect()->route('plans.index')->with('success', 'Plan updated successfully');
