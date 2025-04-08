@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Plan;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -43,6 +44,16 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'agreement' => $request->agreement,
+        ]);
+
+        $freePlan = Plan::where('name', 'Free Plan')->first(); // أو على حسب العمود اللي عندك
+
+        $user->subscriptions()->create([
+            'user_id' => $user->id,
+            'plan_id' => $freePlan->id,  // هنا إزالتها ووضعت الـ plan_id فقط
+            'start_date' => now(),
+            'end_date' => now()->addMonth(),
+            'status' => 'active',
         ]);
 
         event(new Registered($user));

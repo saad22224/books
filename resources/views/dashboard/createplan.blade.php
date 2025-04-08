@@ -121,7 +121,7 @@
                                     <input  name="price" type="number" class="form-control" >
                                     <span class="input-group-text">USD</span>
                                 </div>
-                                <div class="mt-2 w-75">
+                             <div class="mt-2 w-75">
                                     <label for="exampleFormControlInput1" class="form-label">book number
                                         
                                     </label>
